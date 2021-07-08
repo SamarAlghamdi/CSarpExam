@@ -1,0 +1,36 @@
+@model List<Hobby>;
+
+<div class="d-flex justify-content-end">
+    <a href="logout" class="text-right">Logout</a>
+</div>
+<h1 class="text-center text-muted">Hobbies</h1>
+
+<div class=" d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Enthusiasts</th>
+                    </tr>
+                    @foreach(var hobby in Model)
+                    {
+                            <tr>
+                            <td><a href="/Hobby/@hobby.HobbyId">@hobby.Name</a></td>
+                            <td>@hobby.Enthusiasts.Count</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    @* <div class="col-md-6">
+        <div class="card p-3">
+            Top Novice:
+            Top Intermadiate:
+            Top Expert:
+        </div>
+    </div> *@
+</div>
+<a href="/Hobby/new">Create a Hobby</a>

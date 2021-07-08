@@ -1,0 +1,17 @@
+@model Hobby;
+<div class="d-flex justify-content-center">
+<form class="shadow-lg p-4 my-5 bg-white rounded w-100" asp-action="Edit" asp-controller="Home" method="post" >
+    <h2 class="text-center text-muted">Create a Hobby</h2>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <button class="btn btn-dark" type="submit">Ubdate</button> 
+</form>
+</div>

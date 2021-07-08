@@ -1,0 +1,50 @@
+@model Hobby;
+<div class="w-50">
+<h1>@Model.Name</h1>
+<h4>Description: <span>@Model.Description</span></h4>
+<br/>
+<a class="d-flex justify-content-end" href="/edit/@Model.HobbyId">Edit Hobby</a>
+</div>
+
+<br/>
+<div class="row">
+    <div class="col-md-6">
+        <h4>@Model.Name Enthusiasts:</h4>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Name</th>
+                            <th>Proficiency</th>
+                        </tr>
+                        @foreach(var user in Model.Enthusiasts)
+                        {
+                                <tr>
+                                <td>@user.User.FirstName @user.User.LastName</td>
+                                <td>@user.Proficiency</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"> 
+        @if (!Model.Enthusiasts.Any(h=>h.UserId== ViewBag.Uid)){
+        <h4>Become an Enthusiast!</h4> 
+        <form asp-action="AddToHobbies" asp-controller="Home" method="post">
+            <div class="form-group">
+                <select name="pro" class="form-control">
+                    <option value="Novice">Novice</option>
+                    <option value="Intermadiate">Intermadiate</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+            <input type="hidden" value="@Model.HobbyId" name="hobbyId"/>
+                <button>Add to Hobbies</button>
+            
+        </form>
+        }
+    </div>
+</div>
